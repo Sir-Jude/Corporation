@@ -48,6 +48,9 @@ class NewCorporationView(UserPassesTestMixin, generic.CreateView):
         """
         if self.request.user:
             form.instance.user = self.request.user
+            messages.success(
+                self.request, "Your corporation has been successfully registered!"
+            )
             return super().form_valid(form)
     
         
@@ -74,3 +77,31 @@ class NewCorporationView(UserPassesTestMixin, generic.CreateView):
 class CorporationDetailView(generic.DetailView):
     model = Corporation
     template_name = "corporation/detail.html"
+
+
+class EditCorporationView(generic.UpdateView):
+    model = Corporation
+    form_class = CorporationForm
+    template_name = "corporation/edit.html"
+    
+    def get_success_url(self):
+        """
+        Returns the URL to redirect to upon successful form submission.
+
+        This method overrides the default success URL behavior to redirect
+        the user to the detailed view of the updated Corporation instance.
+
+        Returns:
+            str: The URL for the corporation detail page, based on the primary
+            key of the updated Corporation instance.
+        """
+        return reverse_lazy("corporation:detail", args=[self.object.pk])
+    
+    def form_valid(self, form):
+        messages.success(
+            self.request, "Your corporation details have been successfully updated!"
+        )
+        return super().form_valid(form)
+    
+    def test_func(self):
+        return self.request.user.is_authenticated

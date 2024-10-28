@@ -1,3 +1,22 @@
 {% extends "base.html" %}
-
-
+{% block title %}
+  Home
+{% endblock title %}
+{% block content %}
+  <h1>This is the Home page.</h1>
+  {% if request.user.is_authenticated %}
+    {% if request.user.corporation_set.count == 0 and not request.user.is_superuser %}
+      <h4>
+        Click on <a href="{% url 'corporation:new' %}">New</a> to register your corporation.
+      </h4>
+    {% else %}
+      <p>
+        <h4>
+          Visit your <a href="{% url 'users:detail' username=user.username %}">Profile</a> to edit your details.
+        </h4>
+      </p>
+    {% endif %}
+  {% else %}
+    <h4>Please, <a href="{% url 'account_login' %}">log in</a></h4>
+  {% endif %}
+{% endblock content %}

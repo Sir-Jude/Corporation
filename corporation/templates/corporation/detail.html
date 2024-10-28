@@ -19,6 +19,7 @@
     </p>
     <div>
       <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+      <a href="{% url 'corporation:edit' corporation.pk %}" class="btn btn-warning">Edit</a>
     </div>
   {% else %}
     {% include "users/403_csrf.html" %}
