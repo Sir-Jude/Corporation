@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+  {{ corporation.corporation_name }}
+{% endblock title %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <div>
+      <strong><h2>{{ corporation.corporation_name }}</h2></strong>
+    </div>
+    <p>
+      <h6>Owned by: {{ corporation.user }}</h5>
+      <h6>Sector: {{ corporation.sector }}</h5>
+      <h6>Address: {{ corporation.address }}</h5>
+      <h6>Phone number: {{ corporation.phone_number }}</h5>
+      <h6>Email: {{ corporation.email }}</h5>
+      <h6>Webpage: {{ corporation.url }}</h5>
+      <h6>Linkedin: {{ corporation.linkedin }}</h5>
+    </p>
+    <div>
+      <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+    </div>
+  {% else %}
+    {% include "users/403_csrf.html" %}
+  {% endif %} 
+{% endblock content %}

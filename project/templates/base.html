@@ -82,6 +82,11 @@
                 <a class="nav-link"
                    href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
               </li>
+              {% if request.user.corporation_set.count == 0 and not request.user.is_superuser %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'corporation:new' %}">{% translate "New" %}</a>
+                </li>
+              {% endif %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
                 <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
@@ -117,7 +122,6 @@
     {% endif %}
     {% block main %}
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}
     {% endblock main %}
 

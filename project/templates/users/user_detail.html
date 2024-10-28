@@ -3,11 +3,7 @@
 {% load static %}
 
 {% block title %}
-  User: 
-  
-    {{ object.username }}
-  
-  
+  {{ object.username }}
 {% endblock title %}
 {% block content %}
   <div class="container">
@@ -21,6 +17,13 @@
       </h2>
       {% if object.name %}
         <p>{{ object.name }}</p>
+      {% endif %}
+      {% if corporation %}
+        <p>
+          Corporation: <a href="{% url 'corporation:detail' corporation.pk %}">{{ corporation.corporation_name }}</a>
+        </p>
+      {% else %}
+        <p>No corporation associated with this user.</p>
       {% endif %}
     </div>
   </div>

@@ -8,12 +8,19 @@ from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
 from project.users.models import User
-
+from corporation.models import Corporation
 
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["corporation"] = Corporation.objects.filter(
+            user=self.object
+        ).first()  # Get the first associated corporation
+        return context
 
 
 user_detail_view = UserDetailView.as_view()

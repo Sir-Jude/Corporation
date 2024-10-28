@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 class Corporation(models.Model):
@@ -13,5 +14,19 @@ class Corporation(models.Model):
     url = models.URLField(max_length=255, blank=True, default="")
     linkedin = models.URLField(max_length=255, blank=True, default="")
 
+    def get_absolute_url(self):
+        """
+        Returns the absolute URL for the detail view of this Corporation instance.
+
+        This method uses Django's reverse function to generate a URL to the 
+        'corporation:detail' view, which displays details of a specific Corporation 
+        instance. The 'pk' of the instance is passed as a keyword argument to 
+        identify which Corporation's detail view should be rendered.
+
+        Returns:
+            str: The URL path to the detail page of this Corporation instance.
+        """
+        return reverse("corporation:detail", kwargs={"pk": self.pk})
+    
     def __str__(self):
         return self.corporation_name
