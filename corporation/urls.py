@@ -6,4 +6,5 @@ urlpatterns = [
     path("new/", views.NewCorporationView.as_view(), name="new"),
     path("<int:pk>/", views.CorporationDetailView.as_view(), name="detail"),
     path("<int:pk>/edit/", views.EditCorporationView.as_view(), name="edit"),
+    path("<int:pk>/delete/", views.DeleteCorporationView.as_view(), name="delete"),
 ]

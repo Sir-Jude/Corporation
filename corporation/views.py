@@ -105,3 +105,20 @@ class EditCorporationView(generic.UpdateView):
     
     def test_func(self):
         return self.request.user.is_authenticated
+
+
+class DeleteCorporationView(UserPassesTestMixin, generic.DeleteView):
+    model = Corporation
+    template_name = "corporation/delete.html"
+    
+    def get_success_url(self):
+        return reverse_lazy("home")
+    
+    def form_valid(self, form):
+        messages.success(
+            self.request, "Your corporation has been successfully deleted!"
+        )
+        return super().form_valid(form)
+    
+    def test_func(self):
+        return self.request.user.is_authenticated
