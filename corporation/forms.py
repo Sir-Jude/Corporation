@@ -12,8 +12,18 @@ class CorporationForm(forms.ModelForm):
             "phone_number",
             "email",
             "url",
-            "linkedin"
+            "linkedin",
         )
+    
+        widgets = {
+            "corporation_name": forms.TextInput(attrs={"class": "form-control"}),
+            "sector": forms.TextInput(attrs={"class": "form-control"}),
+            "address": forms.TextInput(attrs={"class": "form-control"}),
+            "phone_number": forms.TextInput(attrs={"class": "form-control"}),
+            "email": forms.EmailInput(attrs={"class": "form-control"}),
+            "url": forms.URLInput(attrs={"class": "form-control"}),
+            "linkedin": forms.URLInput(attrs={"class": "form-control"}),
+        }
     
     def save(self, commit=True):
         # Save corporation instance first

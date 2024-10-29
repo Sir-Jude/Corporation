@@ -5,24 +5,49 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    <div>
-      <strong><h2>{{ corporation.corporation_name }}</h2></strong>
-    </div>
-    <p>
-      <h6>Owned by: {{ corporation.user }}</h5>
-      <h6>Sector: {{ corporation.sector }}</h5>
-      <h6>Address: {{ corporation.address }}</h5>
-      <h6>Phone number: {{ corporation.phone_number }}</h5>
-      <h6>Email: {{ corporation.email }}</h5>
-      <h6>Webpage: {{ corporation.url }}</h5>
-      <h6>Linkedin: {{ corporation.linkedin }}</h5>
-    </p>
-    <div>
-      <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
-      <a href="{% url 'corporation:edit' corporation.pk %}" class="btn btn-warning">Edit</a>
-      <a href="{% url 'corporation:delete' corporation.id %}" class="btn btn-danger">Delete</a>
+    <div class="container mt-4">
+      <div>
+        <h2 class="fw-bold">{{ corporation.corporation_name }}</h2>
+      </div>
+      <div class="mt-3 row">
+        <div class="col-md-2 fw-bold">Owned by:</div>
+        <div class="col-md-9">{{ corporation.user }}</div>
+
+        <div class="col-md-2 fw-bold">Sector:</div>
+        <div class="col-md-9">{{ corporation.sector }}</div>
+
+        <div class="col-md-2 fw-bold">Address:</div>
+        <div class="col-md-9">{{ corporation.address }}</div>
+
+        <div class="col-md-2 fw-bold">Phone number:</div>
+        <div class="col-md-9">{{ corporation.phone_number }}</div>
+
+        <div class="col-md-2 fw-bold">Email:</div>
+        <div class="col-md-9">
+          <a href="mailto:{{ corporation.email }}">{{ corporation.email }}</a>
+        </div>
+
+        <div class="col-md-2 fw-bold">Webpage:</div>
+        <div class="col-md-9">
+          {% if corporation.url %}
+            <a href="{{ corporation.url }}" target="_blank">{{ corporation.url }}</a>
+          {% endif %}
+        </div>
+
+        <div class="col-md-2 fw-bold">LinkedIn:</div>
+        <div class="col-md-9">
+          {% if corporation.linkedin %}
+            <a href="{{ corporation.linkedin }}" target="_blank">{{ corporation.linkedin }}</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="mt-4">
+        <a href="{% url 'home' %}" class="btn btn-primary me-2">Back</a>
+        <a href="{% url 'corporation:edit' corporation.pk %}" class="btn btn-warning me-2">Edit</a>
+        <a href="{% url 'corporation:delete' corporation.id %}" class="btn btn-danger">Delete</a>
+      </div>
     </div>
   {% else %}
     {% include "users/403_csrf.html" %}
-  {% endif %} 
+  {% endif %}
 {% endblock content %}

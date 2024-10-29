@@ -1,3 +1,71 @@
 {% extends "base.html" %}
+{% block title %}
+  About
+{% endblock title %}
+{% block content %}
+<h1>Django Project Case Study</h1>
 
+<p><strong>Objective</strong>: Build a Django project based on the <a href="https://github.com/cookiecutter/cookiecutter-django">Cookiecutter</a> Django template that includes creating and managing a corporation model linked to the user model. Each task should be committed incrementally, with the final project pushed to a GitHub repository.</p>
 
+<h4>Steps:</h4>
+<ol>
+  <li><strong>Set up the Project</strong>
+    <ul>
+      <li>Use the Cookiecutter Django template to initialize a new project</li>
+      <li>Configure the project environment to ensure it runs locally.</li>
+    </ul>
+  </li>
+  <li><strong>Create a New Django App</strong>
+    <ul>
+      <li>Name the app as corporations or similar.</li>
+      <li>Make sure this app is included in the Django project settings.</li>
+      <li>Be aware that you need to copy the created folder to the project base folder.</li>
+    </ul>
+  </li>
+  <li><strong>Develop the Corporation Model</strong>
+    <ul>
+      <li>Create a Corporation model with the following fields:
+        <ul>
+          <li>name (CharField, required)</li>
+          <li>address (TextField, required)</li>
+          <li>url (URLField, optional)</li>
+          <li>Other relevant fields as needed.</li>
+        </ul>
+      </li>
+      <li>Establish a relationship between the Corporation model and the existing User model (e.g., using a ForeignKey or OneToOneField).</li>
+      <li>Write a unit test that tests the corporation and user model.</li>
+    </ul>
+  </li>
+  <li><strong>Create CRUD Templates</strong>
+    <ul>
+      <li>Design templates for the following views:
+        <ul>
+          <li>Create: A form to create a new corporation entry.</li>
+          <li>Update: A form to edit an existing corporation.</li>
+          <li>Delete: A form or button to delete a corporation.</li>
+        </ul>
+      </li>
+      <li>Make sure each form template provides feedback (like success or error messages).</li>
+    </ul>
+  </li>
+  <li><strong>Commit Each Step</strong>
+    <ul>
+      <li>Commit changes incrementally after each of the above steps, ensuring clear commit messages.</li>
+    </ul>
+  </li>
+  <li><strong>Push to GitHub</strong>
+    <ul>
+      <li>Create a public GitHub repository for the project.</li>
+      <li>Push all code with commit history to the repository.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>Evaluation Criteria</h4>
+<ul>
+  <li>Proper setup and use of Cookiecutter Django.</li>
+  <li>Clear and functional CRUD operations for the Corporation model.</li>
+  <li>Effective integration of the Corporation model with the User model.</li>
+  <li>Organized commit history that reflects the task progression.</li>
+</ul>
+{% endblock content %}
