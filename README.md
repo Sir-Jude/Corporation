@@ -1,70 +1,43 @@
-# Project
+# Django project case study for a job interview
 
-Case study task for a job interview
+**Objective**: Build a Django project based on the Cookiecutter Django template that includes creating and managing a corporation model linked to the user model. Each task should be committed incrementally, with the final project pushed to a GitHub repository.
 
-[![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+## Steps
 
-License: MIT
+### 1. Set up the Project
+- Use the Cookiecutter Django template to initialize a new project.
+- Configure the project environment to ensure it runs locally.
 
-## Settings
+### 2. Create a New Django App
+- Name the app as `corporations` or similar.
+- Include the app in the Django project settings.
+- Ensure the created app folder is copied to the project base folder.
 
-Moved to [settings](https://cookiecutter-django.readthedocs.io/en/latest/1-getting-started/settings.html).
+### 3. Develop the Corporation Model
+- Create a `Corporation` model with the following fields:
+  - `name` (CharField, required)
+  - `address` (TextField, required)
+  - `url` (URLField, optional)
+  - Other relevant fields as needed.
+- Establish a relationship between the `Corporation` model and the existing `User` model (e.g., using a `ForeignKey` or `OneToOneField`).
+- Write a unit test to test the `Corporation` and `User` models.
 
-## Basic Commands
+### 4. Create CRUD Templates
+- Design templates for the following views:
+  - **Create**: A form to create a new corporation entry.
+  - **Update**: A form to edit an existing corporation.
+  - **Delete**: A form or button to delete a corporation.
+- Ensure each form template provides feedback (e.g., success or error messages).
 
-### Setting Up Your Users
+### 5. Commit Each Step
+- Commit changes incrementally after each of the above steps, ensuring clear commit messages.
 
-- To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
+### 6. Push to GitHub
+- Create a public GitHub repository for the project.
+- Push all code with the commit history to the repository.
 
-- To create a **superuser account**, use this command:
-
-      $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
-
-### Type checks
-
-Running type checks with mypy:
-
-    $ mypy project
-
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML coverage report:
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-#### Running tests with pytest
-
-    $ pytest
-
-### Live reloading and Sass CSS compilation
-
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally.html#using-webpack-or-gulp).
-
-### Email Server
-
-In development, it is often nice to be able to see emails that are being sent from your application. If you choose to use [Mailpit](https://github.com/axllent/mailpit) when generating the project a local SMTP server with a web interface will be available.
-
-1.  [Download the latest Mailpit release](https://github.com/axllent/mailpit/releases) for your OS.
-
-2.  Copy the binary file to the project root.
-
-3.  Make it executable:
-
-        $ chmod +x mailpit
-
-4.  Spin up another terminal window and start it there:
-
-        ./mailpit
-
-5.  Check out <http://127.0.0.1:8025/> to see how it goes.
-
-Now you have your own mail server running locally, ready to receive whatever you send it.
-
-## Deployment
-
-The following details how to deploy this application.
+## Evaluation Criteria
+- Proper setup and use of Cookiecutter Django.
+- Clear and functional CRUD operations for the `Corporation` model.
+- Effective integration of the `Corporation` model with the `User` model.
+- Organized commit history that reflects the task progression.

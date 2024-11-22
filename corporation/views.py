@@ -79,7 +79,7 @@ class CorporationDetailView(generic.DetailView):
     template_name = "corporation/detail.html"
 
 
-class EditCorporationView(generic.UpdateView):
+class EditCorporationView(UserPassesTestMixin, generic.UpdateView):
     model = Corporation
     form_class = CorporationForm
     template_name = "corporation/edit.html"
