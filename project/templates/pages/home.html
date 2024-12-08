@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block title %}
   Home
 {% endblock title %}
@@ -17,6 +18,8 @@
       </p>
     {% endif %}
   {% else %}
-    <h4>Please, <a href="{% url 'account_login' %}">log in</a></h4>
+    <h4>
+      Please, <a href="{% url 'account_login' %}">log in</a>
+    </h4>
   {% endif %}
 {% endblock content %}

@@ -1,23 +1,25 @@
 {% extends "base.html" %}
+
 {% block title %}
   Edit corporation
 {% endblock title %}
 {% block content %}
-{% if user.is_authenticated %}
-  <div class="form-group">
-    <form method="POST">
-      {% csrf_token %}
-      <fieldset>
-        <legend><h2>Edit corporation's details...</h2></legend>
-        <p>
-          {{ form.as_p }}
-        </p>
-      </fieldset>
-      <a href="{% url 'corporation:detail' corporation.pk %}" class="btn btn-secondary">Cancel</a>
-      <button type="submit" class="btn btn-success">Update</button>
-    </form>
-  </div>
-{% else %}
-  {% include "users/403_csrf.html" %}
-{% endif %}
+  {% if user.is_authenticated %}
+    <div class="form-group">
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+          <legend>
+            <h2>Edit corporation's details...</h2>
+          </legend>
+          <p>{{ form.as_p }}</p>
+        </fieldset>
+        <a href="{% url 'corporation:detail' corporation.pk %}"
+           class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Update</button>
+      </form>
+    </div>
+  {% else %}
+    {% include "users/403_csrf.html" %}
+  {% endif %}
 {% endblock content %}
